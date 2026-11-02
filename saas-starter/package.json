@@ -1,0 +1,24 @@
+{
+  "name": "mdrn-saas-starter",
+  "version": "0.1.0",
+  "private": true,
+  "description": "An open-source SaaS starter on MDRN: sign-in, teams, invitations and settings",
+  "license": "MIT",
+  "type": "module",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "node --test test/*.test.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "hono": "^4.13.13",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "^22.19.0",
+    "typescript": "^5.9.3"
+  },
+  "engines": {
+    "node": ">=22.18.0"
+  }
+}
