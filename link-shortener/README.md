@@ -1,4 +1,4 @@
-# Built by an AI agent: a link shortener on MDRN
+# Link shortener on MDRN
 
 A small link shortener that an AI agent wrote from one prompt, ready to deploy on
 [MDRN](https://mdrn.io) without edits. The prompt is in [PROMPT.md](PROMPT.md); what the agent

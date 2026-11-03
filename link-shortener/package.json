@@ -1,8 +1,8 @@
 {
-  "name": "mdrn-agent-built",
+  "name": "mdrn-link-shortener",
   "version": "0.1.0",
   "private": true,
-  "description": "A link shortener on MDRN, built by an AI agent from one prompt",
+  "description": "A link shortener on MDRN, written by an AI agent from one prompt",
   "license": "MIT",
   "type": "module",
   "main": "src/index.ts",
