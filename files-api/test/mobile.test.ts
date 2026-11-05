@@ -81,7 +81,7 @@ test('a code is issued only on a same-origin confirmation by a signed-in browser
   const fake = fakeMdrn(settings);
   const { flow } = pkce();
   const web = { id: 'usr_alice', token: fake.signIn('usr_alice') };
-  assert.equal((await call(fake, 'POST', '/mobile/authorize', new URLSearchParams(flow), { web, origin: 'https://evil.apps.mdrn.io' })).status, 403);
+  assert.equal((await call(fake, 'POST', '/mobile/authorize', new URLSearchParams(flow), { web, origin: 'https://evil.mdrn.build' })).status, 403);
   assert.equal((await call(fake, 'POST', '/mobile/authorize', new URLSearchParams(flow), { origin: ORIGIN })).status, 401);
   const tokens = await signIn(fake);
   assert.equal((await call(fake, 'POST', '/mobile/authorize', new URLSearchParams(flow), { bearer: tokens.access_token })).status, 401, 'a mobile token cannot mint codes');

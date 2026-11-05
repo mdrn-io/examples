@@ -23,7 +23,7 @@ test("sign-in headers are ignored when the Worker is not running on MDRN", async
 
 test('a write from another origin is refused', async () => {
   const fake = fakeMdrn();
-  for (const origin of ['https://other.apps.mdrn.io', null]) {
+  for (const origin of ['https://other.mdrn.build', null]) {
     const response = await call(fake, 'POST', '/api/links', { url: 'https://example.com/' }, { user: 'usr_alice', origin });
     assert.equal(response.status, 403, String(origin));
   }
@@ -56,7 +56,7 @@ test('the SQLite client refuses a redirect and sends its token only over https',
     MDRN_SQLITE_TOKEN: 'mdrn_product_sqlite',
   });
   await assert.rejects(sqlite.list(env(`${ORIGIN}/_mdrn/v1/sqlite`), 'links'), (e: unknown) => e instanceof ProductError && e.code === 'UNEXPECTED_REDIRECT');
-  await assert.rejects(sqlite.list(env('http://links.example.apps.mdrn.io/_mdrn/v1/sqlite'), 'links'), /must be an https URL/);
+  await assert.rejects(sqlite.list(env('http://links-example.mdrn.build/_mdrn/v1/sqlite'), 'links'), /must be an https URL/);
   assert.equal(calls, 1);
 });
 

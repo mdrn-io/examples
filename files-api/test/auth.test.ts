@@ -76,8 +76,8 @@ test('a cookie-signed-in write must come from the app\'s own origin', async () =
   const fake = fakeMdrn();
   const web = { id: 'usr_alice', token: fake.signIn('usr_alice') };
   const note = { title: 'hello' };
-  // Another app on the same apps.mdrn.io site, and a request with no Origin at all.
-  assert.equal((await call(fake, 'POST', '/api/notes', note, { web, origin: 'https://evil.apps.mdrn.io' })).status, 403);
+  // Another app on the same mdrn.build site, and a request with no Origin at all.
+  assert.equal((await call(fake, 'POST', '/api/notes', note, { web, origin: 'https://evil.mdrn.build' })).status, 403);
   assert.equal((await call(fake, 'POST', '/api/notes', note, { web, origin: null })).status, 403);
   assert.equal((await call(fake, 'POST', '/api/notes', note, { web, origin: ORIGIN })).status, 201);
   // Without Origin, the browser's own Sec-Fetch-Site still proves a same-origin request.

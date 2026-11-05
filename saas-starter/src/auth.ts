@@ -26,7 +26,7 @@ export function signedInUser(c: Context<AppEnv>): SignedInUser | null {
   return { id, identityToken };
 }
 
-/** A cookie-signed-in write must come from this app's own pages. Every app on *.apps.mdrn.io
+/** A cookie-signed-in write must come from this app's own pages. Every app on *.mdrn.build
  * shares that parent domain, and a browser that does not yet treat it as a public suffix sees
  * them all as one "site", so SameSite cookies alone could let another app's page post here with
  * your user's cookie; the Origin header tells them apart in every browser. */

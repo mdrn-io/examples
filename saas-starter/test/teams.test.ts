@@ -102,7 +102,7 @@ test('sign-in, the Origin check and input validation guard every route', async (
   const fake = fakeMdrn();
   const alice = fake.user('usr_alice');
   assert.equal((await call(fake, 'GET', '/api/teams')).status, 401);
-  assert.equal((await call(fake, 'POST', '/api/teams', { name: 'Acme' }, { ...alice, origin: 'https://other.apps.mdrn.io' })).status, 403);
+  assert.equal((await call(fake, 'POST', '/api/teams', { name: 'Acme' }, { ...alice, origin: 'https://other.mdrn.build' })).status, 403);
   for (const body of [{}, { name: '' }, { name: 'x'.repeat(81) }, { name: 'two\nlines' }, { name: 'ok', role: 'owner' }]) {
     assert.equal((await call(fake, 'POST', '/api/teams', body, alice)).status, 400, JSON.stringify(body));
   }
