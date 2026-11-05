@@ -68,7 +68,7 @@ Proxy adds two headers before the request reaches this Worker:
 Proxy first **deletes every `x-mdrn-*` header the caller sent**, so a client cannot forge them,
 and this Worker can only be reached through Proxy. `src/auth.ts` therefore trusts them, checks
 their shape, and does one more thing for every cookie-signed-in write: the `Origin` must be the
-app's own. Every app on `*.mdrn.build` shares that parent domain, and a browser that does not
+app's own. Every app on `*.mdrn.page` shares that parent domain, and a browser that does not
 yet treat it as a public suffix sees them all as one "site", so without that check another app's
 page could post here with your user's cookie.
 
@@ -191,7 +191,7 @@ let verifier = randomURLSafe(32), state = randomURLSafe(16)
 let challenge = Data(SHA256.hash(data: Data(verifier.utf8))).base64EncodedString()
     .replacingOccurrences(of: "+", with: "-").replacingOccurrences(of: "/", with: "_")
     .replacingOccurrences(of: "=", with: "")
-var start = URLComponents(string: "https://your-app.mdrn.build/mobile/start")!
+var start = URLComponents(string: "https://your-app.mdrn.page/mobile/start")!
 start.queryItems = [
     .init(name: "redirect_uri", value: "com.example.app:/signed-in"),
     .init(name: "code_challenge", value: challenge),
@@ -216,7 +216,7 @@ import * as WebBrowser from 'expo-web-browser';
 import * as Crypto from 'expo-crypto';
 import * as SecureStore from 'expo-secure-store';
 
-const API = 'https://your-app.mdrn.build';
+const API = 'https://your-app.mdrn.page';
 const REDIRECT = 'com.example.app:/signed-in';
 const b64url = (s: string) => s.replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
 const random = () => b64url(btoa(String.fromCharCode(...Crypto.getRandomBytes(32))));

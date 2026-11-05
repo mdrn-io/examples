@@ -17,7 +17,7 @@ import { fail } from './errors.ts';
 const USER_ID = /^[A-Za-z0-9_-]{1,128}$/;
 const SAFE_METHODS = new Set(['GET', 'HEAD', 'OPTIONS']);
 
-/** A cookie-signed-in write must come from this app's own pages. Every app on *.mdrn.build
+/** A cookie-signed-in write must come from this app's own pages. Every app on *.mdrn.page
  * shares that parent domain, and a browser that does not yet treat it as a public suffix sees
  * them all as one "site", so SameSite cookies alone could let another app's page post here with
  * your user's cookie; the Origin header tells them apart in every browser. */

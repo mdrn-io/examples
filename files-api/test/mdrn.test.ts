@@ -4,7 +4,7 @@ import assert from 'node:assert/strict';
 import { sqlite, ProductError } from '../src/mdrn.ts';
 import type { Env } from '../src/env.ts';
 
-const envAnswering = (response: () => Response, url = 'https://notes-example.mdrn.build/_mdrn/v1/sqlite'): Env => ({
+const envAnswering = (response: () => Response, url = 'https://notes-example.mdrn.page/_mdrn/v1/sqlite'): Env => ({
   MDRN_PRODUCTS: { fetch: async () => response() },
   MDRN_SQLITE_URL: url,
   MDRN_SQLITE_TOKEN: 'mdrn_product_sqlite',
@@ -38,7 +38,7 @@ test('the product token only goes to an https URL', async () => {
     calls++;
     return Response.json({ items: [], nextCursor: null });
   };
-  await assert.rejects(sqlite.list(envAnswering(answer, 'http://notes-example.mdrn.build/_mdrn/v1/sqlite'), 'notes'), /must be an https URL/);
+  await assert.rejects(sqlite.list(envAnswering(answer, 'http://notes-example.mdrn.page/_mdrn/v1/sqlite'), 'notes'), /must be an https URL/);
   assert.equal(calls, 0);
   await sqlite.list(envAnswering(answer, 'http://localhost:8787/_mdrn/v1/sqlite'), 'notes');
   assert.equal(calls, 1);

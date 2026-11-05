@@ -5,7 +5,7 @@
 import app from '../src/index.ts';
 import type { Env } from '../src/env.ts';
 
-export const ORIGIN = 'https://teams-example.mdrn.build';
+export const ORIGIN = 'https://teams-example.mdrn.page';
 const TOKENS = { SQLITE: 'mdrn_product_sqlite', POSTGRES: 'mdrn_product_postgres', MAIL: 'mdrn_product_mail' };
 
 interface StoredRecord {

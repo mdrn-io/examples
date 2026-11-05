@@ -6,7 +6,7 @@ import { createHash } from 'node:crypto';
 import app from '../src/index.ts';
 import type { Env } from '../src/env.ts';
 
-export const ORIGIN = 'https://links-example.mdrn.build';
+export const ORIGIN = 'https://links-example.mdrn.page';
 const TOKEN = 'mdrn_product_sqlite';
 
 export interface FakeRecord {
